@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TableContainer from "../table/TableContainer";
 import config from "../config.json";
+import SearchBox from "../table/SearchBox";
 
 function Properties() {
   const [properties, setProperties] = useState(null);
@@ -11,21 +12,31 @@ function Properties() {
     timer = setInterval(() => {
       loadingCheck();
     }, 10);
-    fetchProperties();
+    if (isLoading) {
+      fetchProperties();
+    }
     return () => {
       clearInterval(timer);
     };
   }, []);
 
-  const headers = ["ID", "Street Number","Street Name", "Unit Number" , "Price"];
+  function update(val) {
 
-  function fetchProperties() {
+    fetchProperties(val);
+  }
+
+  const headers = ["ID", "Street Number", "Street Name", "Unit Number", "Price"];
+
+  function fetchProperties(val) {
     fetch(`${config.SERVER_URL}properties/search`, {
-      method: "get",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Authorization": "Bearer " + localStorage.getItem("token"),
       },
+      body:
+        JSON.stringify(val)
+
     })
       .then((response) => {
         if (response.ok) {
@@ -50,7 +61,7 @@ function Properties() {
     theContent = <TableContainer headVals={headers} colVals={properties} />;
   }
 
-  return <React.Fragment>{theContent}</React.Fragment>;
+  return <React.Fragment><SearchBox update={update} />{theContent}</React.Fragment>;
 }
 
 export default Properties;

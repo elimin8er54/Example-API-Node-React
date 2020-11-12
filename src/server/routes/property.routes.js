@@ -2,7 +2,7 @@ const properties = require("../controllers/property.controller.js");
 const { authJwt } = require("../middleware");
 
 module.exports = (app) => {
-  app.get("/properties/search",authJwt.verifyToken, properties.findAllSearch);
+  app.post("/properties/search", authJwt.verifyToken, properties.findAllSearch);
   // Create a new Property
   app.post("/api/properties", properties.create);
 

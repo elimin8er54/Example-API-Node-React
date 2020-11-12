@@ -19,6 +19,19 @@ a[href] {
   color:red;
 }
 
+.search-inputs{
+  background-color:white ; 
+
+}
+
+.search-box{
+  background: rgb(180, 145, 145);
+  border-radius: 25px;
+  margin-bottom:20px;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
 table {
   border-radius: 25px;
   background: rgb(212, 212, 212);

@@ -35,7 +35,7 @@ Property.findById = (propertyId, result) => {
         result(null, res[0]);
         return;
       }
-     
+
       // not found Property the id
       result({ kind: "not_found" }, null);
     }
@@ -49,9 +49,9 @@ Property.getAll = (result) => {
       result(null, err);
       return;
     }
-   
+
     result(null, res);
-    
+
   });
 };
 
@@ -103,18 +103,24 @@ Property.removeAll = (result) => {
   });
 };
 
-Property.getAllSearch = (result) => {
-  sql.query("SELECT property_id,property_streetnumber,street_name,property_unitnumber,property_leaseprice FROM property" +
-   " INNER JOIN street on property_streetid = street_id" +
-   " LIMIT 100", (err, res) => {
+Property.getAllSearch = (id, result) => {
+
+  let theQuery = "SELECT property_id,property_streetnumber,street_name,property_unitnumber,property_leaseprice FROM property" +
+    " INNER JOIN street on property_streetid = street_id WHERE 1 ";
+
+  if (id) theQuery += " AND property_id LIKE ?"
+  theQuery += " LIMIT 100";
+
+  sql.query(theQuery, ['%' + id + '%'], (err, res) => {
     if (err) {
+      console.log(err);
       result(null, err);
-     
+
       return;
     }
-   
+
     result(null, res);
-    
+
   });
 };
 

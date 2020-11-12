@@ -35,23 +35,23 @@ exports.findAll = (req, res) => {
 // Find a single Proeprty with a propertyId
 exports.findOne = (req, res) => {
   Property.findById(req.params.propertyId, (err, data) => {
- 
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found Property with id ${req.params.propertyId}.`,
-          });
-        } else {
-          res.status(500).send({
-            message: `Error retrieving Property with id ${req.params.propertyId}`,
-          });
-        }
+
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Property with id ${req.params.propertyId}.`,
+        });
       } else {
-        res.json(data);
+        res.status(500).send({
+          message: `Error retrieving Property with id ${req.params.propertyId}`,
+        });
       }
-  
-    
-    
+    } else {
+      res.json(data);
+    }
+
+
+
   });
 };
 
@@ -115,7 +115,7 @@ exports.deleteAll = (req, res) => {
 
 // Get properties for search page
 exports.findAllSearch = (req, res) => {
-  Property.getAllSearch((err, data) => {
+  Property.getAllSearch(req.body.id, (err, data) => {
     if (err) {
       res.status(500).send({
         message:
