@@ -5,7 +5,7 @@ function About() {
   return (
     <div className="about">
       <p>
-        It took me a week to learn Nodejs, Express, React, JWT from scratch.
+        It took me a few weeks to learn Nodejs, Express, React, JWT, and other packages from scratch.
       </p>
       <p>
         I have this running on an AWS EC2 instance on port 3001. Port 80 uses

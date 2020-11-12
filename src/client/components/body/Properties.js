@@ -47,6 +47,7 @@ function Properties() {
       })
       .then((data) => {
         setProperties(data);
+
       });
   }
 
@@ -61,7 +62,7 @@ function Properties() {
     theContent = <TableContainer headVals={headers} colVals={properties} />;
   }
 
-  return <React.Fragment><SearchBox update={update} />{theContent}</React.Fragment>;
+  return <React.Fragment><p>These are from the database from the link on the top left</p><SearchBox update={update} />{theContent}</React.Fragment>;
 }
 
 export default Properties;

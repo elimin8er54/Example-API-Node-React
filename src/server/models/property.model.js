@@ -106,7 +106,7 @@ Property.removeAll = (result) => {
 Property.getAllSearch = (id, result) => {
 
   let theQuery = "SELECT property_id,property_streetnumber,street_name,property_unitnumber,property_leaseprice FROM property" +
-    " INNER JOIN street on property_streetid = street_id WHERE 1 ";
+    " LEFT JOIN street on property_streetid = street_id WHERE 1=1 ";
 
   if (id) theQuery += " AND property_id LIKE ?"
   theQuery += " LIMIT 100";
