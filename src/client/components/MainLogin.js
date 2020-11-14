@@ -13,28 +13,30 @@ function MainLogin() {
   const page = isLoginPage ? (
     <Login swapper={swapper} />
   ) : (
-    <Signup swapper={swapper} />
-  );
+      <Signup swapper={swapper} />
+    );
 
   return (
     <React.Fragment>
-      <p className="login_title">
-        Login page using JWT tokens and a MySQL database.
-        <br />
-        Create an account, do not put a password you use personally.
-        <br />
-        You don't need any autherization to use http methods.
-        <br />
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://shauntsite.com"
-        >
-          Back to Shauntsite.com.
-        </a>
-      </p>
+      <div class="login-container">
+        <p className="login_title">
+          Login page using JWT tokens and a MySQL database.
+          <br />
+          Create an account, do not put a password you use personally.
+          <br />
+          You don't need any autherization to use http methods.
+          <br />
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="http://shauntsite.com"
+          >
+            Back to Shauntsite.com.
+          </a>
+        </p>
 
-      <div className="logincontainer">{page}</div>
+        <div className="login-box">{page}</div>
+      </div>
     </React.Fragment>
   );
 }

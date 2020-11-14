@@ -6,7 +6,7 @@ function Home() {
     <div className="home">
       <h2>
         <b>
-          This is a very basic example using React/Express/Nodejs/JWT/MySQL.
+          Example using React/Express/ Nodejs/JWT/MySQL.
         </b>
       </h2>
       <p>
@@ -22,13 +22,13 @@ function Home() {
         minute. It's made just as a basic example.
       </p>
       <p>
-        <span id = "git-text" >Github:</span>
+        <span id="git-text" >Github:</span>
         <a
           rel="noopener noreferrer"
           target="_blank"
           href="https://github.com/elimin8er54/myexample"
         >
-          https://github.com/elimin8er54/myexample
+          My Files
         </a>
       </p>
     </div>
