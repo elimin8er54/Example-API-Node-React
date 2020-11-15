@@ -5,10 +5,10 @@ function About() {
   return (
     <div className="about">
       <p>
-        It took me a few weeks to learn Nodejs, Express, React, JWT, and other packages from scratch.
+        Website uses Nodejs, Express, React, JWT, and other packages.
       </p>
       <p>
-        I have this running on an AWS EC2 instance on port 3001. Port 80 uses
+        I have this running on an AWS EC2 instance with a subdomain and the main website running in
         Apache and hosts the website you came from. (shauntsite.com)
       </p>
     </div>

@@ -21,7 +21,7 @@ function Header() {
           target="_blank"
           rel="noopener noreferrer"
           className="headerlink"
-          href="http://shauntsite.com"
+          href="https://shauntsite.com"
         >
           Back to Shauntsite.com.
         </a>

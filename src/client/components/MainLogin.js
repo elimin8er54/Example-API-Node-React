@@ -29,7 +29,7 @@ function MainLogin() {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="http://shauntsite.com"
+            href="https://shauntsite.com"
           >
             Back to Shauntsite.com.
           </a>
