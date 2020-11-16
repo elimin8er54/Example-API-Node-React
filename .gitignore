@@ -93,6 +93,7 @@ dist
 
 #File with DB credentials
 src/server/config/db.config.js
+src/server/config/db.config.ts
 
 # Gatsby files
 .cache/
