@@ -1,17 +1,17 @@
-const User = require('../models/users.models.js');
+const User = require('../models/users.models.ts');
 
-exports.signin = (req, res) => {
+exports.signin = (req: any, res: any) => {
   // Validate Request
- 
+
   if (!req.body) {
     res.status(400).send({ message: 'Could not log in' });
   }
 
-  
+
 
   // Check database and sign in
-  User.signin(new User(req.body), (err, data) => {
-    
+  User.signin(req.body, (err, data) => {
+
     if (err) {
       res.status(500).send({
         message: err.message || 'Something went wrong',
@@ -22,13 +22,13 @@ exports.signin = (req, res) => {
   });
 };
 
-exports.signup = (req, res) => {
+exports.signup = (req: any, res: any) => {
   // Validate Request
   if (!req.body) {
     res.status(400).send({ message: 'Could not sign up' });
   }
 
-  User.signup(new User(req.body), (err, data) => {
+  User.signup(req.body, (err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message || 'Something went wrong',

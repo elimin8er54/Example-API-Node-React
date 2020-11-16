@@ -1,6 +1,6 @@
 const { authJwt } = require("../middleware");
 const user = require("../controllers/user.controller");
-
+export { };
 module.exports = function (app) {
   app.post("/api/signup", user.signup);
 

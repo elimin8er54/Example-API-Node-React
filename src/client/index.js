@@ -8,12 +8,12 @@ import MainLogin from './components/MainLogin';
 
 ReactDOM.render(
   <React.StrictMode>
-  <Router>
-        <Switch>
-          <Route path="/login" component={MainLogin} />
-          <Route path="/" component={Header} />
-        </Switch>
-      </Router>
+    <Router>
+      <Switch>
+        <Route path="/login" component={MainLogin} />
+        <Route path="/" component={Header} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

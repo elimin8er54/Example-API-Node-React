@@ -1,5 +1,6 @@
-const properties = require("../controllers/property.controller.js");
+const properties = require("../controllers/property.controller.ts");
 const { authJwt } = require("../middleware");
+export { };
 
 module.exports = (app) => {
   app.post("/properties/search", authJwt.verifyToken, properties.findAllSearch);

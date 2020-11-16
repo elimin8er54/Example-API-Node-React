@@ -1,7 +1,10 @@
-const Property = require("../models/property.model.js");
+const Property = require("../models/property.model.ts");
+
+
+
 
 // Create and Save a new Property
-exports.create = (req, res) => {
+exports.create = (req: any, res: any) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -10,7 +13,7 @@ exports.create = (req, res) => {
   }
 
   // Save Property in the database
-  Property.create(new Property(req.body), (err, data) => {
+  Property.create(req.body, (err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message || "Some error occurred while signing in.",
@@ -21,7 +24,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Property from the database.
 
-exports.findAll = (req, res) => {
+exports.findAll = (req: any, res: any) => {
   Property.getAll((err, data) => {
     if (err) {
       res.status(500).send({
@@ -33,7 +36,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Proeprty with a propertyId
-exports.findOne = (req, res) => {
+exports.findOne = (req: any, res: any) => {
   Property.findById(req.params.propertyId, (err, data) => {
 
     if (err) {
@@ -56,7 +59,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update a Property identified by the propertyId in the request
-exports.update = (req, res) => {
+exports.update = (req: any, res: any) => {
   // Validate Request
   if (!req.body) {
     res.status(400).send({
@@ -66,7 +69,7 @@ exports.update = (req, res) => {
 
   Property.updateById(
     req.params.propertyId,
-    new Property(req.body),
+    req.body,
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
@@ -84,7 +87,7 @@ exports.update = (req, res) => {
 };
 
 // Delete a Property  with the specified propertyId in the request
-exports.delete = (req, res) => {
+exports.delete = (req: any, res: any) => {
   Property.remove(req.params.propertyId, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -101,7 +104,7 @@ exports.delete = (req, res) => {
 };
 
 // Delete all Property from the database.
-exports.deleteAll = (req, res) => {
+exports.deleteAll = (req: any, res: any) => {
   Property.removeAll((err, data) => {
     if (err) {
       res.status(500).send({
@@ -114,7 +117,7 @@ exports.deleteAll = (req, res) => {
 
 
 // Get properties for search page
-exports.findAllSearch = (req, res) => {
+exports.findAllSearch = (req: any, res: any) => {
   Property.getAllSearch(req.body.id, (err, data) => {
     if (err) {
       res.status(500).send({

@@ -1,7 +1,7 @@
-const Landlord = require('../models/landlord.model.js');
+const Landlord = require('../models/landlord.model.ts');
 
 // Create and Save a new Landlord
-exports.create = (req, res) => {
+exports.create = (req: any, res: any) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -10,7 +10,7 @@ exports.create = (req, res) => {
   }
 
   // Save Landlord in the database
-  Landlord.create(landlord, (err, data) => {
+  Landlord.create(req.body, (err, data) => {
     if (err) {
       res.status(500).send({
         message:
@@ -22,7 +22,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Landlord from the database.
 
-exports.findAll = (req, res) => {
+exports.findAll = (req: any, res: any) => {
   Landlord.getAll((err, data) => {
     if (err) {
       res.status(500).send({
@@ -34,7 +34,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Landlord with a landlordId
-exports.findOne = (req, res) => {
+exports.findOne = (req: any, res: any) => {
   Landlord.findById(req.params.landlordId, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
@@ -52,7 +52,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update a Landlord identified by the landlordId in the request
-exports.update = (req, res) => {
+exports.update = (req: any, res: any) => {
   // Validate Request
   if (!req.body) {
     res.status(400).send({
@@ -63,7 +63,7 @@ exports.update = (req, res) => {
 
   Landlord.updateById(
     req.params.landlordId,
-    new Landlord(req.body),
+    req.body,
     (err, data) => {
       if (err) {
         if (err.kind === 'not_found') {
@@ -81,7 +81,7 @@ exports.update = (req, res) => {
 };
 
 // Delete a Landlord with the specified landlordId in the request
-exports.delete = (req, res) => {
+exports.delete = (req: any, res: any) => {
   Landlord.remove(req.params.landlordId, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
@@ -98,7 +98,7 @@ exports.delete = (req, res) => {
 };
 
 // Delete all Landlord from the database.
-exports.deleteAll = (req, res) => {
+exports.deleteAll = (req: any, res: any) => {
   Landlord.removeAll((err, data) => {
     if (err) {
       res.status(500).send({

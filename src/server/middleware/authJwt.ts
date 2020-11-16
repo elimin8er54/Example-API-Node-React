@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-const config = require("../config/auth.config.js");
+const config = require("../config/auth.config.ts");
 
-verifyToken = (req, res, next) => {
+const verifyToken = (req: any, res: any, next: any) => {
   const header = req.headers["authorization"];
   let token;
   if (typeof header !== "undefined") {
@@ -14,7 +14,7 @@ verifyToken = (req, res, next) => {
       message: "No token provided!",
     });
   }
-  
+
 
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
@@ -22,7 +22,7 @@ verifyToken = (req, res, next) => {
         message: "Unauthorized!",
       });
     } else {
-    
+
 
       next();
     }
@@ -30,8 +30,8 @@ verifyToken = (req, res, next) => {
 };
 
 //Dummy function for redirecting if token is invalid 
-redirectToLogin = (req,res) => {
-  res.json({success:true});
+const redirectToLogin = (req, res) => {
+  res.json({ success: true });
 }
 
 const authJwt = {

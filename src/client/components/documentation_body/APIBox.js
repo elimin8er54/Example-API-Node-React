@@ -25,7 +25,7 @@ function APIBox(props) {
 
         <p>Content type:application/json</p>
 
-        <p>Production Base URL:http://shauntsite.com:3001</p>
+        <p>Production Base URL http://api.shauntsite.com</p>
       </div>
       <div className="api_attribute_title">
         <h4>Attributes</h4>
