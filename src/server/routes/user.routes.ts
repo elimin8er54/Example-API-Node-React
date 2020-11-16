@@ -8,3 +8,4 @@ module.exports = function (app) {
 
   app.post("/api/jwtauth", authJwt.verifyToken, authJwt.redirectToLogin);
 };
+

@@ -22,6 +22,7 @@ exports.signin = (req: any, res: any) => {
   });
 };
 
+
 exports.signup = (req: any, res: any) => {
   // Validate Request
   if (!req.body) {

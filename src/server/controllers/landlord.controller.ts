@@ -20,6 +20,7 @@ exports.create = (req: any, res: any) => {
   });
 };
 
+
 // Retrieve all Landlord from the database.
 
 exports.findAll = (req: any, res: any) => {

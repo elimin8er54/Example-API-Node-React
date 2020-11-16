@@ -19,3 +19,4 @@ module.exports = (app) => {
   // Delete all Landlord
   //  app.delete("/api/landlords", landlords.deleteAll);
 };
+

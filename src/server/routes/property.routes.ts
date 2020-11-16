@@ -25,5 +25,4 @@ module.exports = (app) => {
   //  app.delete("/api/properties", properties.deleteAll);
 
 
-
 };

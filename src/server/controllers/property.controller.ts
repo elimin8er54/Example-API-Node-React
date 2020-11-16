@@ -116,6 +116,7 @@ exports.deleteAll = (req: any, res: any) => {
 };
 
 
+
 // Get properties for search page
 exports.findAllSearch = (req: any, res: any) => {
   Property.getAllSearch(req.body.id, (err, data) => {

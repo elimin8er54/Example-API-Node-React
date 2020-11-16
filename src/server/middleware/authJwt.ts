@@ -29,6 +29,7 @@ const verifyToken = (req: any, res: any, next: any) => {
   });
 };
 
+
 //Dummy function for redirecting if token is invalid 
 const redirectToLogin = (req, res) => {
   res.json({ success: true });
