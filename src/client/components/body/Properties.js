@@ -9,6 +9,7 @@ function Properties() {
   let theContent;
   let timer;
   useEffect(() => {
+
     timer = setInterval(() => {
       loadingCheck();
     }, 10);

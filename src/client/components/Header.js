@@ -3,6 +3,7 @@ import { Route, NavLink, BrowserRouter } from "react-router-dom";
 import About from "./body/About";
 import Documentation from "./body/Documentation";
 import Home from "./body/Home";
+import Fun from "./body/Fun";
 import { checkToken } from "./JWTAuth";
 import Logout from "./Logout";
 import Properties from "./body/Properties";
@@ -42,6 +43,9 @@ function Header() {
               <li>
                 <NavLink to="/properties">Properties </NavLink>
               </li>
+              <li>
+                <NavLink to="/fun">For Fun </NavLink>
+              </li>
               <li className="logoutheader">
                 <NavLink to="/logout">Logout </NavLink>
               </li>
@@ -63,6 +67,11 @@ function Header() {
                 exact
                 path="/properties"
                 component={Properties}
+              />
+              <Route
+                exact
+                path="/fun"
+                component={Fun}
               />
               <Route exact path="/logout" component={Logout} />
             </div>

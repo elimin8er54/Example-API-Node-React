@@ -288,6 +288,15 @@ span.psw {
   padding-top: 16px;
 }
 
+.particle{
+  background-color:white;
+  width:10px;
+  height:10px;
+  border-radius:5px;
+  position:absolute;
+  
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {

@@ -5,13 +5,16 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import MainLogin from './components/MainLogin';
+import Particle from './components/randomForFun/Particles/ParticlePage';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
         <Route path="/login" component={MainLogin} />
+
         <Route path="/" component={Header} />
+
       </Switch>
     </Router>
   </React.StrictMode>,
