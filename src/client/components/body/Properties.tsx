@@ -14,10 +14,10 @@ function Properties() {
       loadingCheck();
     }, 10);
     if (isLoading) {
-      fetchProperties();
+      fetchProperties(-1);
     }
     return () => {
-      clearInterval(timer);
+      clearInterval();
     };
   }, []);
 
@@ -28,7 +28,7 @@ function Properties() {
 
   const headers = ["ID", "Street Number", "Street Name", "Unit Number", "Price"];
 
-  function fetchProperties(val) {
+  function fetchProperties(val?: number) {
     fetch(`${config.SERVER_URL}properties/search`, {
       method: "POST",
       headers: {

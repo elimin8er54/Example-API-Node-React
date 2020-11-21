@@ -3,20 +3,14 @@ const config = require("../config/auth.config");
 import { Response, Request, NextFunction } from 'express';
 
 
-interface Token {
-  token: string;
-  headers: string;
-}
-
-
-const verifyToken = <Request extends Token>(req: Request, res: Response, next: NextFunction): any => {
+const verifyToken = (req: Request, res: Response, next: NextFunction): any => {
   const header = req.headers["authorization"];
   let token;
   if (typeof header !== "undefined") {
     const bearer = header.split(" ");
     token = bearer[1];
 
-    req.token = token;
+
   } else {
     return res.status(403).send({
       message: "No token provided!",

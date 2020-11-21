@@ -18,7 +18,7 @@ function MainLogin() {
 
   return (
     <React.Fragment>
-      <div class="login-container">
+      <div className="login-container">
         <p className="login_title">
           Login page using JWT tokens and a MySQL database.
           <br />

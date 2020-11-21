@@ -1,6 +1,6 @@
 import React from "react";
 import "../../App.css";
-import APIBox from "./APIBox.js";
+import APIBox from "./APIBox";
 
 function API(props) {
   let apiBoxes;

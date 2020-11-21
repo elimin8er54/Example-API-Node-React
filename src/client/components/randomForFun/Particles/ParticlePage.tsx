@@ -31,7 +31,7 @@ function ParticlePage() {
     //Outside gets called every re-render
 
 
-    const theParticles = [];
+    const theParticles: any[] = [];
     for (let i = 0; i < 10; i++) {
         theParticles.push(<Particle y={yMouse} x={xMouse} value={i} />);
     }

@@ -4,7 +4,7 @@ import path from 'path';
 const app = express();
 
 const port = 3001;
-
+process.env.PUBLIC_URL = 'http://localhost';
 app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static("dist"));

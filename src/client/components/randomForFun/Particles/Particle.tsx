@@ -9,8 +9,10 @@ function Particle(props) {
 
         let propY = props.y.b();
         let propX = props.x.b();
-        d.style.left = propX + 'px';
-        d.style.top = propY + 'px';
+        if (d !== null) {
+            d.style.left = propX + 'px';
+            d.style.top = propY + 'px';
+        }
 
 
     })

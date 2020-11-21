@@ -1,6 +1,6 @@
 import React from "react";
 import "../../App.css";
-import APIBoxAttribute from "./APIBoxAttribute.js";
+import APIBoxAttribute from "./APIBoxAttribute";
 
 function APIBox(props) {
   let items = [];
@@ -9,7 +9,7 @@ function APIBox(props) {
       <APIBoxAttribute attType={address.type} attName={address.name} />
     ));
   } else {
-    items = "";
+    items = [];
   }
 
   return (

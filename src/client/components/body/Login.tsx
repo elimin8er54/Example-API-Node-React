@@ -43,7 +43,7 @@ function Login(props) {
 
   return (
     <div className="login">
-      <h4>Sign-In: <span class="signin-info">(Click "<i>Switch to Sign-Up</i>" and enter a username to log in.)</span></h4>
+      <h4>Sign-In: <span className="signin-info">(Click "<i>Switch to Sign-Up</i>" and enter a username to log in.)</span></h4>
       <form onSubmit={handleSubmit}>
         <p className="loginerror">{notice}</p>
         Username
