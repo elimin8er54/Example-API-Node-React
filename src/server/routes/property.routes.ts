@@ -1,4 +1,4 @@
-const properties = require("../controllers/property.controller.ts");
+const properties = require("../controllers/property.controller");
 const { authJwt } = require("../middleware");
 export { };
 

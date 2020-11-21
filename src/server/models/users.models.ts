@@ -1,8 +1,8 @@
 import { builtinModules } from "module";
 
 const bcrypt = require("bcryptjs");
-const sql = require("./db.ts");
-const auth = require("../config/auth.config.ts");
+const sql = require("./db");
+const auth = require("../config/auth.config");
 const jwt = require("jsonwebtoken");
 export { };
 

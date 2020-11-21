@@ -1,4 +1,4 @@
-const User = require('../models/users.models.ts');
+const User = require('../models/users.models');
 
 exports.signin = (req: any, res: any) => {
   // Validate Request

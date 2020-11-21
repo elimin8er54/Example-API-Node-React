@@ -1,4 +1,4 @@
-const landlords = require("../controllers/landlord.controller.ts");
+const landlords = require("../controllers/landlord.controller");
 
 module.exports = (app) => {
   // Create a new Landlord

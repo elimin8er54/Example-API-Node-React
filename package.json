@@ -2,14 +2,14 @@
   "name": "exampleapi",
   "version": "1.0.0",
   "description": "A full stack web application using React, Node.js, Express and Webpack.",
-  "main": "src/server/index.ts",
+  "main": "src/server/dist/index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "npm run build && node src/server/index.ts",
+    "start": "npm run build && tsc -p src/server && node src/server/dist/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-    "server": "nodemon  src/server/index.ts",
+    "server": "tsc -p src/server && nodemon src/server/dist/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "jest && node src/server/controllers/property.controller.ts"
+    "test": "jest && node src/server/controllers/property.controller.js"
   },
   "author": "Shaunt Keshishian",
   "dependencies": {

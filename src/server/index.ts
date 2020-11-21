@@ -15,12 +15,12 @@ app.use((req: any, res: any, next: any) => {
   next();
 });
 
-require("./routes/user.routes.ts")(app);
-require("./routes/property.routes.ts")(app);
-require("./routes/landlord.routes.ts")(app);
+require("./routes/user.routes")(app);
+require("./routes/property.routes")(app);
+require("./routes/landlord.routes")(app);
 
 app.get("*", (req: any, res: any) => {
-  res.sendFile(path.join(__dirname + "../../../dist/", "index.html"));
+  res.sendFile(path.join(__dirname + "../../../../dist/", "index.html"));
 });
 
 

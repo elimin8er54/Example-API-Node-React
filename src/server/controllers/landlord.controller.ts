@@ -1,4 +1,4 @@
-const Landlord = require('../models/landlord.model.ts');
+const Landlord = require('../models/landlord.model');
 
 // Create and Save a new Landlord
 exports.create = (req: any, res: any) => {

@@ -1,4 +1,4 @@
-const sql = require("./db.ts");
+const sql = require("./db");
 export { };
 
 

@@ -1,4 +1,4 @@
-const Property = require("../models/property.model.ts");
+const Property = require("../models/property.model");
 
 
 
