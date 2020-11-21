@@ -1,7 +1,7 @@
 const Landlord = require('../models/landlord.model');
+import { Request, Response } from 'express';
 
-// Create and Save a new Landlord
-exports.create = (req: any, res: any) => {
+exports.create = (req: Request, res: Response) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -23,7 +23,7 @@ exports.create = (req: any, res: any) => {
 
 // Retrieve all Landlord from the database.
 
-exports.findAll = (req: any, res: any) => {
+exports.findAll = (req: Request, res: Response) => {
   Landlord.getAll((err, data) => {
     if (err) {
       res.status(500).send({
@@ -35,7 +35,7 @@ exports.findAll = (req: any, res: any) => {
 };
 
 // Find a single Landlord with a landlordId
-exports.findOne = (req: any, res: any) => {
+exports.findOne = (req: Request, res: Response) => {
   Landlord.findById(req.params.landlordId, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
@@ -53,7 +53,7 @@ exports.findOne = (req: any, res: any) => {
 };
 
 // Update a Landlord identified by the landlordId in the request
-exports.update = (req: any, res: any) => {
+exports.update = (req: Request, res: Response) => {
   // Validate Request
   if (!req.body) {
     res.status(400).send({
@@ -82,7 +82,7 @@ exports.update = (req: any, res: any) => {
 };
 
 // Delete a Landlord with the specified landlordId in the request
-exports.delete = (req: any, res: any) => {
+exports.delete = (req: Request, res: Response) => {
   Landlord.remove(req.params.landlordId, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
@@ -99,7 +99,7 @@ exports.delete = (req: any, res: any) => {
 };
 
 // Delete all Landlord from the database.
-exports.deleteAll = (req: any, res: any) => {
+exports.deleteAll = (req: Request, res: Response) => {
   Landlord.removeAll((err, data) => {
     if (err) {
       res.status(500).send({

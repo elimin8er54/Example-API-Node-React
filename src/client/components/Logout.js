@@ -2,7 +2,7 @@ import "../App.css";
 
 function Logout() {
   localStorage.removeItem("token");
-  document.location.href = "/login";
+  document.location.href = "/";
 }
 
 export default Logout;

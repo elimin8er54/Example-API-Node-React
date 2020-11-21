@@ -32,7 +32,7 @@ function Login(props) {
       .then((data) => {
         if (data.success) {
           localStorage.setItem("token", data.token);
-          document.location.href = "/";
+          document.location.href = "/home";
         } else {
           setPassword("");
           setNotice("Incorrect login information");

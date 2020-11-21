@@ -30,7 +30,7 @@ function Header() {
           <div className="container">
             <ul className="nav">
               <li>
-                <NavLink exact to="/">
+                <NavLink exact to="/home">
                   Home
                 </NavLink>
               </li>
@@ -51,7 +51,7 @@ function Header() {
               </li>
             </ul>
             <div className="pages">
-              <Route exact path="/" component={Home} />
+              <Route exact path="/home" component={Home} />
               <Route exact path="/about" component={About} />
               <Route
                 exact

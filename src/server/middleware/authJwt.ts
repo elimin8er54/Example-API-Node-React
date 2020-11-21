@@ -1,7 +1,15 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 const config = require("../config/auth.config");
+import { Response, Request, NextFunction } from 'express';
 
-const verifyToken = (req: any, res: any, next: any) => {
+
+interface Token {
+  token: string;
+  headers: string;
+}
+
+
+const verifyToken = <Request extends Token>(req: Request, res: Response, next: NextFunction): any => {
   const header = req.headers["authorization"];
   let token;
   if (typeof header !== "undefined") {
@@ -16,14 +24,12 @@ const verifyToken = (req: any, res: any, next: any) => {
   }
 
 
-  jwt.verify(token, config.secret, (err, decoded) => {
+  jwt.verify(token, config.secret, (err: Error, decoded: jwt) => {
     if (err) {
       return res.status(401).send({
         message: "Unauthorized!",
       });
     } else {
-
-
       next();
     }
   });

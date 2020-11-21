@@ -13,8 +13,6 @@ module.exports = (app) => {
   // Retrieve a single Property with propertyId
   app.get("/api/properties/:propertyId", properties.findOne);
 
-
-
   // Update a Property with propertyId
   app.patch("/api/properties/:propertyId", properties.update);
 

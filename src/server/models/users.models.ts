@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const sql = require("./db");
 const auth = require("../config/auth.config");
 const jwt = require("jsonwebtoken");
-export { };
+
 
 module.exports = {
   signin: (newUser: any, result: any) => {
