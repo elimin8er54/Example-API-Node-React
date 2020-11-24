@@ -14,21 +14,22 @@ const Properties = (): React.ReactElement =>{
       loadingCheck();
     }, 10);
     if (isLoading) {
-      fetchProperties(null);
+      fetchProperties({});
     }
     return () => {
       clearInterval(timer);
     };
   }, []);
 
-  function update(val: string) {
-
+  function update(val: {}) {
+ 
     fetchProperties(val);
   }
 
   const headers:string[] = ["ID", "Street Number", "Street Name", "Unit Number", "Price"];
 
-  function fetchProperties(val?: string) {
+  function fetchProperties(val: {}) {
+    
     fetch(`${config.SERVER_URL}properties/search`, {
       method: "POST",
       headers: {

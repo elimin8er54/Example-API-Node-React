@@ -1,13 +1,14 @@
 import React from "react";
 
 interface Props {
-  headVals: string[]
+  headVals: string[];
 }
 
-  const TableHeader: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
-  const item = props.headVals.map((headVal:string) => {
-    return <th key = {headVal}>{headVal}</th>;
-   
+const TableHeader: React.FC<Props> = (
+  props: Props
+): React.ReactElement<Props> => {
+  const item = props.headVals.map((headVal: string) => {
+    return <th key={headVal}>{headVal}</th>;
   });
 
   return (
@@ -15,6 +16,6 @@ interface Props {
       <tr>{item}</tr>
     </thead>
   );
-}
+};
 
 export default TableHeader;

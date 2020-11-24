@@ -1,12 +1,32 @@
 const sql = require("./db");
+import {MysqlError,OkPacket} from 'mysql';
 
+interface Props {
+  price:string;
+  unit_number:string;
+  street_number:string;
+  id?:string;
+
+}
+
+interface Pass {
+  //The callback
+  ( error: Error | null |  {kind:string}, 
+    result: {} | null  ) : void;
+
+}
+
+interface OkPacketExtra extends OkPacket {
+  length:number;
+
+}
 
 module.exports = {
-  create: (newProperty: any, result: any) => {
+  create: <Property extends Props, Result extends Pass>(newProperty: Property, result: Result) => {
     sql.query(
       "INSERT INTO property (property_leaseprice,property_unitnumber,property_streetnumber,property_status) VALUES (?,?,?,0)",
       [newProperty.price, newProperty.unit_number, newProperty.street_number],
-      (err: any, res: { insertId: any; }) => {
+      (err: MysqlError, res: OkPacket) => {
         if (err) {
           result(err, null);
           return;
@@ -17,17 +37,17 @@ module.exports = {
     );
   },
 
-  findById: (propertyId: any, result: any) => {
+  findById: <Property extends Props, Result extends Pass>(propertyId: Property, result: Result) => {
     sql.query(
-      `SELECT * FROM property WHERE property_id = ${propertyId}`,
-      (err: any, res: string | any[]) => {
+      `SELECT * FROM property WHERE property_id = ${propertyId} LIMIT 1`,
+      (err: MysqlError, res: OkPacketExtra) => {
         if (err) {
           result(err, null);
           return;
         }
 
         if (res.length) {
-          result(null, res[0]);
+          result(null, res);
           return;
         }
 
@@ -38,8 +58,8 @@ module.exports = {
 
   },
 
-  getAll: (result: any) => {
-    sql.query("SELECT * FROM property LIMIT 100", (err: any, res: any) => {
+  getAll: <Result extends Pass>(result: Result) => {
+    sql.query("SELECT * FROM property LIMIT 100", (err: MysqlError, res: OkPacket) => {
       if (err) {
         result(null, err);
         return;
@@ -50,11 +70,11 @@ module.exports = {
     });
   },
 
-  updateById: (id: any, property: any, result: any) => {
+  updateById: <Property extends Props, Result extends Pass>(id: Property,property: Property, result: Result) => {
     sql.query(
       "UPDATE property SET property_leaseprice = ?, property_unitnumber = ?, property_streetnumber = ? WHERE property_id = ?",
       [property.price, property.unit_number, property.street_number, id],
-      (err: any, res: { affectedRows: number; }) => {
+      (err: MysqlError, res:OkPacket) => {
         if (err) {
           result(null, err);
           return;
@@ -71,8 +91,8 @@ module.exports = {
     );
   },
 
-  remove: (id: any, result: any) => {
-    sql.query("DELETE FROM property WHERE property_id = ?", id, (err: any, res: { affectedRows: number; }) => {
+  remove: <Property extends Props, Result extends Pass>(id: Property, result: Result) => {
+    sql.query("DELETE FROM property WHERE property_id = ?", id, (err: MysqlError, res: { affectedRows: number; }) => {
       if (err) {
         result(null, err);
         return;
@@ -88,8 +108,8 @@ module.exports = {
     });
   },
 
-  removeAll: (result: any) => {
-    sql.query("DELETE FROM property", (err: any, res: any) => {
+  removeAll:  <Result extends Pass>(result: Result) => {
+    sql.query("DELETE FROM property", (err: MysqlError, res: OkPacket) => {
       if (err) {
         result(null, err);
         return;
@@ -98,7 +118,7 @@ module.exports = {
     });
   },
 
-  getAllSearch: (id: string, result: (arg0: null, arg1: any) => void) => {
+  getAllSearch: <Property extends Props, Result extends Pass> (id: Property, result: Result) => {
 
     let theQuery = "SELECT property_id,property_streetnumber,street_name,property_unitnumber,property_leaseprice FROM property" +
       " LEFT JOIN street on property_streetid = street_id WHERE 1=1 ";
@@ -106,10 +126,10 @@ module.exports = {
     if (id) theQuery += " AND property_id LIKE ?"
     theQuery += " LIMIT 100";
 
-    sql.query(theQuery, ['%' + id + '%'], (err: any, res: any) => {
+    sql.query(theQuery, ['%' + id + '%'], (err: MysqlError, res: OkPacket) => {
       if (err) {
         console.log(err);
-        result(null, err);
+        result(err, null);
 
         return;
       }

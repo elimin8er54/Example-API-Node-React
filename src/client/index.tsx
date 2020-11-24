@@ -13,7 +13,7 @@ ReactDOM.render(
         <Route path="/home" component={Header} />
         <Route path="/" component={MainLogin} />
 
-      </Switch>
+      </Switch> 
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
