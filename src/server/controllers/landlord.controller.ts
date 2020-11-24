@@ -10,7 +10,7 @@ exports.create = (req: Request, res: Response) => {
   }
 
   // Save Landlord in the database
-  Landlord.create(req.body, (err, data) => {
+  Landlord.create(req.body, (err: { message: string; }, data: {}) => {
     if (err) {
       res.status(500).send({
         message:
@@ -24,7 +24,7 @@ exports.create = (req: Request, res: Response) => {
 // Retrieve all Landlord from the database.
 
 exports.findAll = (req: Request, res: Response) => {
-  Landlord.getAll((err, data) => {
+  Landlord.getAll((err: { message: any; }, data: any) => {
     if (err) {
       res.status(500).send({
         message:
@@ -36,7 +36,7 @@ exports.findAll = (req: Request, res: Response) => {
 
 // Find a single Landlord with a landlordId
 exports.findOne = (req: Request, res: Response) => {
-  Landlord.findById(req.params.landlordId, (err, data) => {
+  Landlord.findById(req.params.landlordId, (err: { kind: string; }, data: any) => {
     if (err) {
       if (err.kind === 'not_found') {
         res.status(404).send({
@@ -65,7 +65,7 @@ exports.update = (req: Request, res: Response) => {
   Landlord.updateById(
     req.params.landlordId,
     req.body,
-    (err, data) => {
+    (err: { kind: string; }, data: any) => {
       if (err) {
         if (err.kind === 'not_found') {
           res.status(404).send({
@@ -83,7 +83,7 @@ exports.update = (req: Request, res: Response) => {
 
 // Delete a Landlord with the specified landlordId in the request
 exports.delete = (req: Request, res: Response) => {
-  Landlord.remove(req.params.landlordId, (err, data) => {
+  Landlord.remove(req.params.landlordId, (err: { kind: string; }, data: any) => {
     if (err) {
       if (err.kind === 'not_found') {
         res.status(404).send({
@@ -100,7 +100,7 @@ exports.delete = (req: Request, res: Response) => {
 
 // Delete all Landlord from the database.
 exports.deleteAll = (req: Request, res: Response) => {
-  Landlord.removeAll((err, data) => {
+  Landlord.removeAll((err: { message: any; }, data: any) => {
     if (err) {
       res.status(500).send({
         message:

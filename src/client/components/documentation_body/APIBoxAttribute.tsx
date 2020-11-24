@@ -1,7 +1,12 @@
 import React from "react";
 import "../../App.css";
 
-function APIBoxAttribute(props) {
+interface Props{
+  attName:string;
+  attType:string;
+}
+
+const APIBoxAttribute: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
   return (
     <React.Fragment>
       <li className="api_attribute_body">

@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+const jwt = require('jsonwebtoken');
 const config = require("../config/auth.config");
 import { Response, Request, NextFunction } from 'express';
 
@@ -18,7 +18,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction): any => {
   }
 
 
-  jwt.verify(token, config.secret, (err: Error, decoded: jwt) => {
+  jwt.verify(token, config.secret, (err: Error, decoded: any) => {
     if (err) {
       return res.status(401).send({
         message: "Unauthorized!",
@@ -31,7 +31,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction): any => {
 
 
 //Dummy function for redirecting if token is invalid 
-const redirectToLogin = (req, res) => {
+const redirectToLogin = (req: Request, res: Response  ) => {
   res.json({ success: true });
 }
 

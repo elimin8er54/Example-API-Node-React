@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
 
-function Particle(props) {
+interface Props {
+    y:{b:()=>void};
+    x:{b:()=>void};
+    value:string;
+}
+
+const Particle:React.FC<Props> = (props: Props): React.ReactElement<Props> => {
 
 
     useLayoutEffect(() => {

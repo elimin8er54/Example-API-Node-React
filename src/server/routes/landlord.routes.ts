@@ -1,6 +1,6 @@
 const landlords = require("../controllers/landlord.controller");
-
-module.exports = (app) => {
+import Express from 'express';
+module.exports = (app: Express.Application) => {
   // Create a new Landlord
   app.post("/api/landlords", landlords.create);
 

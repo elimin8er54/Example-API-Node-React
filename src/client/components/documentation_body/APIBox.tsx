@@ -2,15 +2,21 @@ import React from "react";
 import "../../App.css";
 import APIBoxAttribute from "./APIBoxAttribute";
 
-function APIBox(props) {
-  let items = [];
+interface Props {
+ 
+  requestBody:string;
+  title:string;
+  attributes?:{type:string,name:string}[];
+
+}
+
+const APIBox: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
+  let items:React.ReactElement[] = [];
   if (props.attributes !== undefined) {
     items = props.attributes.map((address) => (
       <APIBoxAttribute attType={address.type} attName={address.name} />
     ));
-  } else {
-    items = [];
-  }
+  } 
 
   return (
     <div className="api_block">

@@ -1,7 +1,11 @@
 import React from "react";
 
-function TableHeader(props) {
-  const item = props.headVals.map((headVal) => {
+interface Props {
+  headVals: string[]
+}
+
+  const TableHeader: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
+  const item = props.headVals.map((headVal:string) => {
     return <th key = {headVal}>{headVal}</th>;
    
   });

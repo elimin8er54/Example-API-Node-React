@@ -11,7 +11,7 @@ module.exports = {
     sql.query(
       "SELECT * FROM apiuser WHERE apiuser_username = ? ",
       [newUser.username],
-      (err, res) => {
+      (err: any, res: string | any[]) => {
         if (err) {
 
           result(err, null);
@@ -40,7 +40,7 @@ module.exports = {
     sql.query(
       "SELECT * FROM apiuser WHERE apiuser_username = ?",
       [newUser.username],
-      (err, res) => {
+      (err: any, res: string | any[]) => {
         if (err) {
 
           result(err, null);
@@ -53,7 +53,7 @@ module.exports = {
           sql.query(
             "INSERT INTO apiuser (apiuser_username,apiuser_password) VALUES (?,?)",
             [newUser.username, bcrypt.hashSync(newUser.password, 8)],
-            (err, res2) => {
+            (err: any, res2: { insertId: any; }) => {
               if (err) {
                 console.log(err);
                 result(err, null);

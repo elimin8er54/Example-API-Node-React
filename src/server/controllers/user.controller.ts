@@ -8,7 +8,7 @@ exports.signin = (req: Request, res: Response): void => {
   }
 
   // Check database and sign in
-  user.signin(req.body, (err, data) => {
+  user.signin(req.body, (err: any, data: any) => {
 
     if (err) {
       res.status(500).send({
@@ -27,7 +27,7 @@ exports.signup = (req: Request, res: Response) => {
     res.status(400).send({ message: 'Could not sign up' });
   }
 
-  user.signup(req.body, (err, data) => {
+  user.signup(req.body, (err: { message: any; }, data: any) => {
     if (err) {
       res.status(500).send({
         message: err.message || 'Something went wrong',

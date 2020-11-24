@@ -2,7 +2,7 @@ const Property = require("../models/property.model");
 import { Request, Response } from "express";
 
 // Create and Save a new Property
-exports.create = (req: Request, res: Response) => {
+exports.create = (req: Request, res: Response) =>  {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -11,7 +11,7 @@ exports.create = (req: Request, res: Response) => {
   }
 
   // Save Property in the database
-  Property.create(req.body, (err, data) => {
+  Property.create(req.body, (err: any, data: any) => {
     if (err) {
       res.status(500).send({
         message: err.message || "Some error occurred while signing in.",
@@ -23,7 +23,7 @@ exports.create = (req: Request, res: Response) => {
 // Retrieve all Property from the database.
 
 exports.findAll = (req: Request, res: Response) => {
-  Property.getAll((err, data) => {
+  Property.getAll((err: { message: any; }, data: any) => {
     if (err) {
       res.status(500).send({
         message:
@@ -35,7 +35,7 @@ exports.findAll = (req: Request, res: Response) => {
 
 // Find a single Proeprty with a propertyId
 exports.findOne = (req: Request, res: Response) => {
-  Property.findById(req.params.propertyId, (err, data) => {
+  Property.findById(req.params.propertyId, (err: { kind: string; }, data: any) => {
 
     if (err) {
       if (err.kind === "not_found") {
@@ -68,7 +68,7 @@ exports.update = (req: Request, res: Response) => {
   Property.updateById(
     req.params.propertyId,
     req.body,
-    (err, data) => {
+    (err: { kind: string; }, data: any) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
@@ -86,7 +86,7 @@ exports.update = (req: Request, res: Response) => {
 
 // Delete a Property  with the specified propertyId in the request
 exports.delete = (req: Request, res: Response) => {
-  Property.remove(req.params.propertyId, (err, data) => {
+  Property.remove(req.params.propertyId, (err: { kind: string; }, data: any) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -103,7 +103,7 @@ exports.delete = (req: Request, res: Response) => {
 
 // Delete all Property from the database.
 exports.deleteAll = (req: Request, res: Response) => {
-  Property.removeAll((err, data) => {
+  Property.removeAll((err: { message: any; }, data: any) => {
     if (err) {
       res.status(500).send({
         message:
@@ -117,7 +117,7 @@ exports.deleteAll = (req: Request, res: Response) => {
 
 // Get properties for search page
 exports.findAllSearch = (req: Request, res: Response) => {
-  Property.getAllSearch(req.body.id, (err, data) => {
+  Property.getAllSearch(req.body.id, (err: { message: any; }, data: any) => {
     if (err) {
       res.status(500).send({
         message:

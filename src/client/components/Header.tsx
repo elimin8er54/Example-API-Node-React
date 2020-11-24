@@ -63,16 +63,8 @@ function Header() {
                 path="/documentation/landlords"
                 component={Documentation}
               />
-              <Route
-                exact
-                path="/properties"
-                component={Properties}
-              />
-              <Route
-                exact
-                path="/fun"
-                component={Fun}
-              />
+              <Route exact path="/properties" component={Properties} />
+              <Route exact path="/fun" component={Fun} />
               <Route exact path="/logout" component={Logout} />
             </div>
           </div>

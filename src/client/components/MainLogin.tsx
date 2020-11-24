@@ -6,7 +6,7 @@ import Signup from "./body/Signup";
 function MainLogin() {
   const [isLoginPage, setIsLoginPage] = useState(true);
 
-  function swapper() {
+  const swapper = ()=> {
     setIsLoginPage(!isLoginPage);
   }
 

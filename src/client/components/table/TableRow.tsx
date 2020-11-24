@@ -1,6 +1,11 @@
 import React from "react";
 
-function TableRow(props) {
+
+interface Props {
+  colVals: {}
+}
+
+  const TableRow: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
 
   const rows = Object.values(props.colVals).map((val) => {
 

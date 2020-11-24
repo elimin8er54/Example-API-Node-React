@@ -3,32 +3,32 @@ import TableContainer from "../table/TableContainer";
 import config from "../config.json";
 import SearchBox from "../table/SearchBox";
 
-function Properties() {
+const Properties = (): React.ReactElement =>{
   const [properties, setProperties] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   let theContent;
-  let timer;
+  let timer:number;
   useEffect(() => {
 
-    timer = setInterval(() => {
+    timer = window.setInterval(() => {
       loadingCheck();
     }, 10);
     if (isLoading) {
-      fetchProperties(-1);
+      fetchProperties(null);
     }
     return () => {
-      clearInterval();
+      clearInterval(timer);
     };
   }, []);
 
-  function update(val) {
+  function update(val: string) {
 
     fetchProperties(val);
   }
 
-  const headers = ["ID", "Street Number", "Street Name", "Unit Number", "Price"];
+  const headers:string[] = ["ID", "Street Number", "Street Name", "Unit Number", "Price"];
 
-  function fetchProperties(val?: number) {
+  function fetchProperties(val?: string) {
     fetch(`${config.SERVER_URL}properties/search`, {
       method: "POST",
       headers: {

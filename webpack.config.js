@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const outputDirectory = 'dist';
 
 module.exports = {
-  entry: ['babel-polyfill', './src/client/build/index.js'],
+  entry: ['babel-polyfill', './src/client/index.tsx'],
   output: {
     path: path.join(__dirname, outputDirectory),
     filename: 'bundle.js',
@@ -26,7 +26,12 @@ module.exports = {
     {
       test: /\.(png|woff|woff2|eot|ttf|svg)$/,
       loader: 'url-loader?limit=100000'
-    }
+    },
+    {
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      exclude: '/node_modules/'
+  }
     ]
   },
   resolve: {

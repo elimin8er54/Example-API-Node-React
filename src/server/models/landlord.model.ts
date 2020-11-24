@@ -8,7 +8,7 @@ module.exports = {
     sql.query(
       "INSERT INTO landlord  (landlord_firstname,landlord_lastname,landlord_company) VALUES (?,?,?)",
       [newLandlord.first_name, newLandlord.last_name, newLandlord.company_name],
-      (err, res) => {
+      (err: any, res: { insertId: any; }) => {
         if (err) {
           result(err, null);
           return;
@@ -23,7 +23,7 @@ module.exports = {
   findById: (landlordId: any, result: any) => {
     sql.query(
       `SELECT * FROM landlord WHERE landlord_id = ${landlordId}`,
-      (err, res) => {
+      (err: any, res: string | any[]) => {
         if (err) {
           result(err, null);
           return;
@@ -41,7 +41,7 @@ module.exports = {
   },
 
   getAll: (result: any) => {
-    sql.query("SELECT * FROM landlord LIMIT 100", (err, res) => {
+    sql.query("SELECT * FROM landlord LIMIT 100", (err: any, res: any) => {
       if (err) {
         result(null, err);
         return;
@@ -54,7 +54,7 @@ module.exports = {
     sql.query(
       "UPDATE landlord SET landlord_firstname = ?, landlord_lastname = ?, landlord_company = ? WHERE landlord_id = ?",
       [landlord.first_name, landlord.last_name, landlord.company_name, id],
-      (err, res) => {
+      (err: any, res: { affectedRows: number; }) => {
         if (err) {
           result(null, err);
           return;
@@ -73,7 +73,7 @@ module.exports = {
   },
 
   remove: (id: any, result: any) => {
-    sql.query("DELETE FROM landlord WHERE landlord_id = ?", id, (err, res) => {
+    sql.query("DELETE FROM landlord WHERE landlord_id = ?", id, (err: any, res: { affectedRows: number; }) => {
       if (err) {
         result(null, err);
         return;
@@ -91,7 +91,7 @@ module.exports = {
   },
 
   removeAll: (result: any) => {
-    sql.query("DELETE FROM landlord", (err, res) => {
+    sql.query("DELETE FROM landlord", (err: any, res: any) => {
       if (err) {
         result(null, err);
         return;

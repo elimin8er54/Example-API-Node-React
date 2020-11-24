@@ -1,8 +1,9 @@
 const properties = require("../controllers/property.controller");
 const { authJwt } = require("../middleware");
+import Express from 'express';
 export { };
 
-module.exports = (app) => {
+module.exports = (app: Express.Application) => {
   app.post("/properties/search", authJwt.verifyToken, properties.findAllSearch);
   // Create a new Property
   app.post("/api/properties", properties.create);

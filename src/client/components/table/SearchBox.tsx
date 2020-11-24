@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
-function SearchBox(props) {
+interface Props {
+    update: (val:string)=>void;
+
+}
+
+const SearchBox: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
 
     const [id, setId] = useState("");
 
     useEffect(() => {
-        props.update({ id });
+        props.update( id );
     }, [id])
 
 
-    function handleIdChange(event) {
+    function handleIdChange(event: React.ChangeEvent<HTMLInputElement>) {
 
         setId(event.target.value);
 
 
     }
-
-
-
     return (
         <React.Fragment>
             <div className="search-box">

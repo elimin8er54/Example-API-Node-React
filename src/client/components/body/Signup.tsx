@@ -2,20 +2,24 @@ import React, { useState } from "react";
 import "../../App.css";
 import config from "../config.json";
 
-function Login(props) {
+interface Props {
+  swapper:() =>void;
+}
+
+const Login: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [notice, setNotice] = useState("");
 
-  function handleInputChange(event) {
+  function handleInputChange(event:React.ChangeEvent<HTMLInputElement>) {
     setUsername(event.target.value);
   }
 
-  function handleInputPasswordChange(event) {
+  function handleInputPasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     fetch(`${config.SERVER_URL}api/signup`, {
       method: "post",
       headers: { "Content-Type": "application/json" },

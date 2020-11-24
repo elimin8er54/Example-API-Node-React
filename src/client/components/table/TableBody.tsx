@@ -1,12 +1,16 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-function TableBody(props) {
 
-  const rows = props.colVals.map((colVal) => {
+interface Props {
+  colVals: string[]
+}
+
+  const TableBody: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
+  const rows = props.colVals.map((colVal:string) => {
 
     return (
-      <tr key={colVal[Object.keys(colVal)[0]]}>
+      <tr>
         <TableRow colVals={colVal} />
       </tr>
     );

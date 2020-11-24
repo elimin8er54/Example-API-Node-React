@@ -2,8 +2,12 @@ import React from "react";
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
 
+interface Props {
+  colVals: string[];
+  headVals:string[];
+}
 
-function TableContainer(props) {
+  const TableContainer: React.FC<Props>=(props: Props): React.ReactElement<Props>  =>   {
 
   //This will only check the first row of the table body.
   let theRender;

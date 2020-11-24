@@ -33,7 +33,7 @@ function ParticlePage() {
 
     const theParticles: any[] = [];
     for (let i = 0; i < 10; i++) {
-        theParticles.push(<Particle y={yMouse} x={xMouse} value={i} />);
+        theParticles.push(<Particle y={yMouse} x={xMouse} value={i.toString()} />);
     }
 
     return (
